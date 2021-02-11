@@ -263,6 +263,11 @@ func generateSSHKeys() error {
 			logger.Warningf("Generated key is malformed, not uploading")
 		}
 	}
+	if err := runCmd(exec.Command("/usr/bin/sync")); err != nil {
+		logger.Warningf("Failed to sync disk")
+	}  else {
+		logger.Warningf("Successfully sync'ed disk")
+	}
 	return nil
 }
 
